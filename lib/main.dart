@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '$teamApoints',
+                          '${BlocProvider.of<CounterCubit>(context).teamAPoints}',
                           style: TextStyle(
                             fontSize: 150,
                           ),
@@ -65,6 +65,8 @@ class HomePage extends StatelessWidget {
                             minimumSize: Size(150, 50),
                           ),
                           onPressed: () {
+                            BlocProvider.of<CounterCubit>(context).
+                              TeamIncrement(team: 'A', buttonNumber: 1);
                           },
                           child: Text(
                             'Add 1 Point ',
@@ -79,7 +81,10 @@ class HomePage extends StatelessWidget {
                             primary: Colors.orange,
                             minimumSize: Size(150, 50),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            BlocProvider.of<CounterCubit>(context).
+                              TeamIncrement(team: 'A', buttonNumber: 2);
+                          },
                           child: Text(
                             'Add 2 Point',
                             style: TextStyle(
@@ -94,6 +99,8 @@ class HomePage extends StatelessWidget {
                             minimumSize: Size(150, 50),
                           ),
                           onPressed: () {
+                            BlocProvider.of<CounterCubit>(context)
+                                .TeamIncrement(team: 'A', buttonNumber: 3);
                           },
                           child: Text(
                             'Add 3 Point ',
@@ -127,7 +134,10 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                            '$teamBpoints'
+                            '${BlocProvider.of<CounterCubit>(context).teamBPoints}',
+                          style: TextStyle(
+                            fontSize: 150,
+                          ),
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -136,6 +146,8 @@ class HomePage extends StatelessWidget {
                             minimumSize: Size(150, 50),
                           ),
                           onPressed: () {
+                            BlocProvider.of<CounterCubit>(context)
+                                .TeamIncrement(team: 'B', buttonNumber: 1);
                           },
                           child: Text(
                             'Add 1 Point ',
@@ -151,6 +163,8 @@ class HomePage extends StatelessWidget {
                             minimumSize: Size(150, 50),
                           ),
                           onPressed: () {
+                            BlocProvider.of<CounterCubit>(context)
+                                .TeamIncrement(team: 'B', buttonNumber: 2);
                           },
                           child: Text(
                             'Add 2 Point ',
@@ -166,6 +180,8 @@ class HomePage extends StatelessWidget {
                             minimumSize: Size(150, 50),
                           ),
                           onPressed: () {
+                            BlocProvider.of<CounterCubit>(context)
+                                .TeamIncrement(team: 'B', buttonNumber: 3);
                           },
                           child: Text(
                             'Add 3 Point ',
@@ -199,14 +215,8 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        listener: (context, state) {
-          if(state is CounterTeamAState)
-          {
-            teamApoints = BlocProvider.of<CounterCubit>(context).teamAPoints;
-          }else{
-            teamBpoints = BlocProvider.of<CounterCubit>(context).teamBPoints;
-          }
-        });
+        listener: (context, state) {}
+    );
   }
 }
 

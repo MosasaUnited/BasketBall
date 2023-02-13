@@ -3,11 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterCubit extends Cubit<CounterState>
 {
+  CounterCubit() : super(CounterTeamAState());
   int teamAPoints = 0;
 
   int teamBPoints = 0;
-
-  CounterCubit(CounterState initialState) : super(initialState);
 
   void TeamIncrement({required String team, required int buttonNumber})
   {
